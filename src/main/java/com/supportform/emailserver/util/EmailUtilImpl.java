@@ -6,13 +6,14 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
 
-@Service
+@Component
 public class EmailUtilImpl implements EmailUtil {
 
   JavaMailSenderImpl mailSender;
@@ -23,11 +24,35 @@ public class EmailUtilImpl implements EmailUtil {
   }
 
   @Override
-  public void sendSimpleEmail(String requestorEmail) {
-    SimpleMailMessage message =  new SimpleMailMessage();
-    message.setTo(requestorEmail);
-    message.setFrom("springtest02@gmail.com");
-    message.setSubject("Confirmation Email");
+  public void sendConfirmationEmail(String requestorEmail) {
+    MimeMessage message = mailSender.createMimeMessage();
+    MimeMessageHelper helper = new MimeMessageHelper(message);
+
+    try {
+      helper.setTo(requestorEmail);
+      helper.setSubject("Confirmation Email");
+      helper.setText("This is a  confirmation email!!");
+
+    } catch (MessagingException e) {
+      e.printStackTrace();
+    }
+
+    mailSender.send(message);
+  }
+
+  @Override
+  public void sendSimpleEmail(SupportForm supportForm) {
+    MimeMessage message = mailSender.createMimeMessage();
+    MimeMessageHelper helper = new MimeMessageHelper(message);
+
+    try {
+      helper.setTo("springtest02@gmail.com");
+      helper.setSubject("Issue Email");
+      helper.setText(supportForm.getMessage());
+
+    } catch (MessagingException e) {
+      e.printStackTrace();
+    }
 
     mailSender.send(message);
   }
@@ -35,7 +60,7 @@ public class EmailUtilImpl implements EmailUtil {
   @Override
   public void sendEmailWithAttachment(SupportForm supportForm) {
 
-    MimeMessage message = mailSender.createMimeMessage();
+    /*MimeMessage message = mailSender.createMimeMessage();
 
     try {
       MimeMessageHelper helper = new MimeMessageHelper(message, true);
@@ -52,7 +77,7 @@ public class EmailUtilImpl implements EmailUtil {
 
     } catch (MessagingException e) {
       e.printStackTrace();
-    }
+    }*/
 
   }
 }

@@ -35,10 +35,10 @@ public class SupportFormServiceImpl implements SupportFormService {
     supportForm.setRoomNumber(supportFormDAO.getRoomNumber());
     supportForm.setMessage(supportFormDAO.getMessage());
     supportForm.setUrgent(isUrgentBoolean(supportFormDAO.isUrgent()));
-    supportForm.setAttachment(supportFormDAO.getAttachment());
+//    supportForm.setAttachment(supportFormDAO.getAttachment());
 
     logger.info("Attempting to send the support Form: {} to Support Group", supportForm);
-    emailUtil.sendEmailWithAttachment(supportForm);
+    emailUtil.sendSimpleEmail(supportForm);
     logger.info("SupportForm sent Support Group!!");
 
   }
@@ -46,7 +46,7 @@ public class SupportFormServiceImpl implements SupportFormService {
   @Override
   public void sendConfirmationEmail(String requestorEmail) {
     logger.info("Attempting to send the Confirmation email to the user with email: {}", requestorEmail);
-    emailUtil.sendSimpleEmail(requestorEmail);
+    emailUtil.sendConfirmationEmail(requestorEmail);
     logger.info("Confirmation email sent to the user with email", requestorEmail);
   }
 

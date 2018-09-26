@@ -3,9 +3,9 @@ package com.supportform.emailserver.domain;
 import com.supportform.emailserver.validation.ContactNumberConstraint;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Email;
-import java.io.File;
 
 public class SupportFormDAO {
 
@@ -20,9 +20,9 @@ public class SupportFormDAO {
   private String location;
   private String message;
   private String urgent;
-  private File attachment;
+//  private MultipartFile attachment;
 
-  public SupportFormDAO(String name, String contact, String email, String position, String department, String roomNumber, String location, String message, String urgent, File attachment) {
+  public SupportFormDAO(String name, String contact, @Email String email, String position, String department, String roomNumber, String location, String message, String urgent) {
     this.name = name;
     this.contact = contact;
     this.email = email;
@@ -32,7 +32,11 @@ public class SupportFormDAO {
     this.location = location;
     this.message = message;
     this.urgent = urgent;
-    this.attachment = attachment;
+//    this.attachment = attachment;
+  }
+
+  public SupportFormDAO() {
+
   }
 
   public String getName() {
@@ -107,13 +111,13 @@ public class SupportFormDAO {
     this.urgent = urgent;
   }
 
-  public File getAttachment() {
-    return attachment;
-  }
-
-  public void setAttachment(File attachment) {
-    this.attachment = attachment;
-  }
+//  public MultipartFile getAttachment() {
+//    return attachment;
+//  }
+//
+//  public void setAttachment(MultipartFile attachment) {
+//    this.attachment = attachment;
+//  }
 
   @Override
   public String toString() {

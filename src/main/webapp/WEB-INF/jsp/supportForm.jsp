@@ -6,7 +6,7 @@
 </head>
 <body>
 <header class="jumbotron container text-center"><h1>Support Form</h1></header>
-<form method="post" enctype="multipart/form-data">
+<form method="post">
   <div class="container">
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -20,7 +20,7 @@
     </div>
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="text" name="email" class="form-control" id="email" placeholder="Your full email address">
+      <input type="email" name="email" class="form-control" id="email" placeholder="Your full email address">
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -45,10 +45,6 @@
     <div class="form-group">
       <label for="message">Type your Issue</label>
       <textarea type="message" name="message" class="form-control" id="message" rows="5" placeholder="Type what issue you are having!"></textarea>
-    </div>
-    <div class="form-group">
-      <label for="file">Attachment</label>
-      <input type="file" name="file" class="form-control-file" id="file">
     </div>
     <div class="form-group">
       <div class="form-check">

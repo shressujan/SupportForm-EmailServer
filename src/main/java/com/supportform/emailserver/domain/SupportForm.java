@@ -19,9 +19,9 @@ public class SupportForm {
   private String location;
   private String message;
   private boolean urgent;
-  private File attachment;
+//  private File attachment;
 
-  public SupportForm(String name, BigInteger contact, String email, String position, String department, String roomNumber, String location, String message, boolean urgent, File attachment) {
+  public SupportForm(String name, BigInteger contact, String email, String position, String department, String roomNumber, String location, String message, boolean urgent) {
     this.name = name;
     this.contact = contact;
     this.email = email;
@@ -31,7 +31,7 @@ public class SupportForm {
     this.location = location;
     this.message = message;
     this.urgent = urgent;
-    this.attachment = attachment;
+//    this.attachment = attachment;
   }
 
   public SupportForm() {
@@ -110,13 +110,13 @@ public class SupportForm {
     this.urgent = urgent;
   }
 
-  public File getAttachment() {
-    return attachment;
-  }
-
-  public void setAttachment(File attachment) {
-    this.attachment = attachment;
-  }
+//  public File getAttachment() {
+//    return attachment;
+//  }
+//
+//  public void setAttachment(File attachment) {
+//    this.attachment = attachment;
+//  }
 
   @Override
   public String toString() {
